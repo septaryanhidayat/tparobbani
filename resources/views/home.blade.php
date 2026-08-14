@@ -199,22 +199,35 @@
         <!-- Activities Grid from CMS -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($activities as $index => $act)
-            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col justify-between group">
+            <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col justify-between group">
                 <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <span class="w-12 h-12 rounded-2xl bg-gradient-to-r {{ $act->color ?? 'from-pink-500 to-rose-500' }} text-white flex items-center justify-center font-bold text-xl shadow-md">
+                    @if($act->image)
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="{{ asset($act->image) }}" alt="{{ $act->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 w-9 h-9 rounded-xl bg-gradient-to-r {{ $act->color ?? 'from-pink-500 to-rose-500' }} text-white flex items-center justify-center font-bold text-sm shadow-md">
                             0{{ $index + 1 }}
                         </span>
-                        <span class="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Kegiatan Rutin</span>
                     </div>
+                    @endif
 
-                    <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-pink-600 transition mb-3">
-                        {{ $act->title }}
-                    </h3>
+                    <div class="p-6">
+                        @if(!$act->image)
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="w-10 h-10 rounded-xl bg-gradient-to-r {{ $act->color ?? 'from-pink-500 to-rose-500' }} text-white flex items-center justify-center font-bold text-base shadow-md">
+                                0{{ $index + 1 }}
+                            </span>
+                            <span class="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Kegiatan Rutin</span>
+                        </div>
+                        @endif
 
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        {{ $act->desc }}
-                    </p>
+                        <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-pink-600 transition mb-2">
+                            {{ $act->title }}
+                        </h3>
+
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            {{ $act->desc }}
+                        </p>
+                    </div>
                 </div>
             </div>
             @endforeach
@@ -228,14 +241,14 @@
                         PEMBELAJARAN INTERAKTIF
                     </span>
                     <h3 class="font-display text-2xl sm:text-3xl font-bold">
-                        Pendidikan Karakter & Pengenalan Hijaiyah Sejak Dini
+                        {{ $settings['learning_title'] ?? 'Pendidikan Karakter & Pengenalan Hijaiyah Sejak Dini' }}
                     </h3>
                     <p class="text-pink-100 text-sm sm:text-base leading-relaxed">
-                        Metode pengajaran kami menekankan pada pendekatan yang menyenangkan (play-based learning). Anak diajak belajar huruf dasar dan Hijaiyah tanpa merasa tertekan, diselingi bernyanyi dan cerita islami.
+                        {{ $settings['learning_desc'] ?? 'Metode pengajaran kami menekankan pada pendekatan yang menyenangkan (play-based learning). Anak diajak belajar huruf dasar dan Hijaiyah tanpa merasa tertekan, diselingi bernyanyi dan cerita islami.' }}
                     </p>
                 </div>
                 <div class="lg:col-span-5">
-                    <img src="{{ asset('images/learning-hijaiyah.png') }}" alt="Belajar Hijaiyah TPA Robbani" class="w-full h-56 object-cover rounded-2xl shadow-lg border-2 border-white/30">
+                    <img src="{{ asset($settings['learning_image'] ?? 'images/learning-hijaiyah.png') }}" alt="Belajar Hijaiyah TPA Robbani" class="w-full h-56 object-cover rounded-2xl shadow-lg border-2 border-white/30">
                 </div>
             </div>
         </div>

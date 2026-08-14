@@ -24,6 +24,8 @@ class AdminSettingController extends Controller
             'hero_badge',
             'hero_title',
             'hero_subtitle',
+            'learning_title',
+            'learning_desc',
             'registration_fee',
             'requirements_list',
             'pusat_name',
@@ -45,13 +47,22 @@ class AdminSettingController extends Controller
             }
         }
 
-        // Handle Image Uploads (Hero image or logo)
+        // Handle Image Uploads (Hero image, logo, or learning showcase photo)
         if ($request->hasFile('hero_image')) {
             $file = $request->file('hero_image');
             if ($file->isValid()) {
                 $filename = 'hero-kids-' . time() . '.' . $file->getClientOriginalExtension();
                 $file->move(public_path('images'), $filename);
                 Setting::set('hero_image', 'images/' . $filename);
+            }
+        }
+
+        if ($request->hasFile('learning_image')) {
+            $file = $request->file('learning_image');
+            if ($file->isValid()) {
+                $filename = 'learning-' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('images'), $filename);
+                Setting::set('learning_image', 'images/' . $filename);
             }
         }
 
@@ -64,6 +75,6 @@ class AdminSettingController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Pengaturan website & konten berhasil diperbarui!');
+        return redirect()->back()->with('success', 'Pengaturan website & foto berhasil diperbarui!');
     }
 }

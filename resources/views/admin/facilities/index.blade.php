@@ -4,12 +4,12 @@
 
 @section('content')
 
-<div class="space-y-8" x-data="{ addModal: false }">
+<div class="space-y-8" x-data="{ addModal: false, editModal: false, activeFacility: {} }">
     
     <div class="flex items-center justify-between">
         <div>
             <h2 class="font-display text-2xl font-bold text-slate-900">Fasilitas Utama & Foto Showcase</h2>
-            <p class="text-sm text-slate-500">Tambah fasilitas baru, upload foto ruangan, dan atur tag kategori.</p>
+            <p class="text-sm text-slate-500">Tambah/Edit judul, deskripsi, tag highlight, dan ganti foto ruangan kapan saja.</p>
         </div>
         <button @click="addModal = true" class="px-5 py-3 rounded-2xl font-bold text-xs text-white bg-cyan-600 hover:bg-cyan-700 shadow-md transition">
             + Tambah Fasilitas Baru
@@ -24,11 +24,11 @@
             <form action="{{ route('admin.facilities.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                 @csrf
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Fasilitas</label>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Fasilitas *</label>
                     <input type="text" name="title" required placeholder="Contoh: Kolam Mandi Bola & Area Motorik" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Deskripsi Fasilitas</label>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Deskripsi Fasilitas *</label>
                     <textarea name="desc" rows="3" required placeholder="Penjelasan singkat kenyamanan..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm"></textarea>
                 </div>
                 <div>
@@ -47,6 +47,38 @@
         </div>
     </div>
 
+    <!-- Modal Form Edit -->
+    <div x-show="editModal" x-transition class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 flex items-center justify-center p-4" style="display: none;">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-4">
+            <h3 class="font-display text-xl font-bold text-slate-900">Edit Fasilitas & Ganti Foto</h3>
+            
+            <form :action="'{{ url('admin/facilities') }}/' + activeFacility.id" method="POST" enctype="multipart/form-data" class="space-y-4">
+                @csrf
+                @method('PUT')
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Fasilitas *</label>
+                    <input type="text" name="title" x-model="activeFacility.title" required class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Deskripsi Fasilitas *</label>
+                    <textarea name="desc" rows="3" x-model="activeFacility.desc" required class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tag Highlight</label>
+                    <input type="text" name="tag" x-model="activeFacility.tag" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Ganti Foto Ruangan (Upload Baru)</label>
+                    <input type="file" name="image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-cyan-50 file:text-cyan-600">
+                </div>
+                <div class="flex justify-end gap-3 pt-2">
+                    <button type="button" @click="editModal = false" class="px-5 py-2.5 rounded-xl font-bold text-xs text-slate-600 bg-slate-100 hover:bg-slate-200">Batal</button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl font-bold text-xs text-white bg-cyan-600 hover:bg-cyan-700 shadow-md">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Facility Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($facilities as $fac)
@@ -60,7 +92,9 @@
                 </div>
             </div>
             <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-slate-100">
-                <span class="text-xs font-bold text-slate-400">Urutan: #{{ $fac->order }}</span>
+                <button @click="activeFacility = {{ json_encode($fac) }}; editModal = true" class="text-xs font-bold text-cyan-600 hover:underline">
+                    ✏️ Edit Judul, Teks & Foto
+                </button>
                 <form action="{{ route('admin.facilities.destroy', $fac) }}" method="POST" onsubmit="return confirm('Hapus fasilitas ini?')">
                     @csrf
                     @method('DELETE')

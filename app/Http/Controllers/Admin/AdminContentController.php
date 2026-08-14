@@ -23,7 +23,14 @@ class AdminContentController extends Controller
             'title' => 'required|string|max:255',
             'desc' => 'required|string',
             'color' => 'nullable|string',
+            'image' => 'nullable|image|max:4096',
         ]);
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $filename = 'activity-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('images'), $filename);
+            $validated['image'] = 'images/' . $filename;
+        }
 
         $validated['order'] = Activity::count() + 1;
         Activity::create($validated);
@@ -37,7 +44,14 @@ class AdminContentController extends Controller
             'title' => 'required|string|max:255',
             'desc' => 'required|string',
             'color' => 'nullable|string',
+            'image' => 'nullable|image|max:4096',
         ]);
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $filename = 'activity-' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('images'), $filename);
+            $validated['image'] = 'images/' . $filename;
+        }
 
         $activity->update($validated);
         return redirect()->back()->with('success', 'Kegiatan berhasil diperbarui!');

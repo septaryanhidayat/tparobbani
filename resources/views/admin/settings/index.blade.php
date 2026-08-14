@@ -9,7 +9,7 @@
     <div class="flex items-center justify-between">
         <div>
             <h2 class="font-display text-2xl font-bold text-slate-900">Kelola Teks, Identitas & Foto Website</h2>
-            <p class="text-sm text-slate-500">Ubah judul hero, pengumuman, alamat cabang, nomor WhatsApp, dan foto secara langsung.</p>
+            <p class="text-sm text-slate-500">Ubah judul hero, pengumuman, alamat cabang, nomor WhatsApp, dan semua foto utama secara langsung.</p>
         </div>
     </div>
 
@@ -80,7 +80,30 @@
             </div>
         </div>
 
-        <!-- Card 3: Pricing & Requirements -->
+        <!-- Card 3: Banner Pembelajaran Showcase -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6">
+            <h3 class="font-display text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                <span>📖</span> Banner Pembelajaran Interaktif
+            </h3>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Judul Banner Pembelajaran</label>
+                <input type="text" name="learning_title" value="{{ old('learning_title', $settings['learning_title'] ?? 'Pendidikan Karakter & Pengenalan Hijaiyah Sejak Dini') }}" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pink-500 outline-none text-sm">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Deskripsi Banner Pembelajaran</label>
+                <textarea name="learning_desc" rows="3" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-pink-500 outline-none text-sm">{{ old('learning_desc', $settings['learning_desc'] ?? 'Metode pengajaran kami menekankan pada pendekatan yang menyenangkan (play-based learning). Anak diajak belajar huruf dasar dan Hijaiyah tanpa merasa tertekan, diselingi bernyanyi dan cerita islami.') }}</textarea>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Foto Banner Pembelajaran / Hijaiyah (Upload)</label>
+                <input type="file" name="learning_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-cyan-50 file:text-cyan-600 hover:file:bg-cyan-100">
+                <p class="text-[10px] text-slate-400 mt-1">Foto saat ini: {{ $settings['learning_image'] ?? 'images/learning-hijaiyah.png' }}</p>
+            </div>
+        </div>
+
+        <!-- Card 4: Pricing & Requirements -->
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6">
             <h3 class="font-display text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
                 <span>💰</span> Biaya & Dokumen Persyaratan
@@ -97,7 +120,7 @@
             </div>
         </div>
 
-        <!-- Card 4: TPA Pusat & TPA Cabang Info -->
+        <!-- Card 5: TPA Pusat & TPA Cabang Info -->
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6">
             <h3 class="font-display text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
                 <span>📍</span> Informasi Kontak & Alamat Cabang
@@ -164,7 +187,7 @@
         <!-- Save Button -->
         <div class="flex justify-end pt-4">
             <button type="submit" class="px-8 py-4 rounded-2xl font-bold text-base text-white bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 shadow-xl shadow-pink-500/25 transition transform hover:-translate-y-0.5">
-                💾 Simpan Perubahan Konten & Settings
+                💾 Simpan Perubahan Konten & Foto
             </button>
         </div>
 

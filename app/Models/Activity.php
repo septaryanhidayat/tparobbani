@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    protected $fillable = ['title', 'desc', 'icon', 'color', 'order'];
+    protected $fillable = ['title', 'desc', 'icon', 'color', 'image', 'order'];
 }
