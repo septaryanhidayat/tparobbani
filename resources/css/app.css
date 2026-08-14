@@ -2,8 +2,64 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source '../../resources/views/**/*.blade.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Fredoka', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --color-tpa-magenta: #E6007E;
+    --color-tpa-magenta-dark: #C2185B;
+    --color-tpa-purple: #7B1FA2;
+    --color-tpa-purple-dark: #4A148C;
+    --color-tpa-blue: #0288D1;
+    --color-tpa-blue-dark: #01579B;
+    --color-tpa-yellow: #FFB300;
+    --color-tpa-yellow-dark: #F57F17;
+    --color-tpa-green: #388E3C;
+}
+
+@layer utilities {
+    .bg-tpa-gradient {
+        background: linear-gradient(135deg, #E6007E 0%, #7B1FA2 50%, #0288D1 100%);
+    }
+    .bg-tpa-hero {
+        background: radial-gradient(circle at 10% 20%, rgba(230, 0, 126, 0.08) 0%, rgba(255, 255, 255, 1) 90%),
+                    radial-gradient(circle at 90% 80%, rgba(2, 136, 209, 0.08) 0%, rgba(255, 255, 255, 1) 90%);
+    }
+    .text-tpa-gradient {
+        background: linear-gradient(90deg, #E6007E, #7B1FA2, #0288D1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .text-glow {
+        text-shadow: 0 0 20px rgba(230, 0, 126, 0.3);
+    }
+    .card-glass {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+}
+
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+}
+
+.animate-float {
+    animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+html {
+    scroll-behavior: smooth;
 }
