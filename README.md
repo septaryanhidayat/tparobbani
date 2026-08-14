@@ -1,58 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 👶 Website Company Profile & Admin CMS - Taman Penitipan Anak (TPA) Robbani
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel 13](https://img.shields.io/badge/Laravel-13.25.0-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP 8.4](https://img.shields.io/badge/PHP-8.4.24-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white)](https://alpinejs.dev)
+[![License](https://img.shields.io/badge/License-MIT-blue.style=for-the-badge)](LICENSE)
 
-## About Laravel
+Website Company Profile interaktif dan modern untuk **Taman Penitipan Anak (TPA) Robbani** yang berlokasi di Indralaya Utara, Kabupaten Ogan Ilir, Sumatera Selatan. Dilengkapi dengan **Content Management System (CMS) Dashboard Admin** serbaguna untuk mengelola seluruh teks, informasi pendaftaran, kegiatan harian, fasilitas, dan foto secara real-time.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+🌐 **Website Utama**: [https://tpa.sitrobbani.sch.id](https://tpa.sitrobbani.sch.id)  
+🔑 **Admin Login**: [https://tpa.sitrobbani.sch.id/admin/login](https://tpa.sitrobbani.sch.id/admin/login)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Fitur-Fitur Utama
 
-## Learning Laravel
+### 🏡 Halaman Depan (Public Website)
+- **Hero & Announcement Bar**: Banner promo kuota pendaftaran terbatas, judul dynamic, dan jam operasional.
+- **Profil & Pilar TPA Robbani**: Informasi pengasuhan berbasis kasih sayang, edukasi karakter, huruf dasar & Hijaiyah.
+- **Fasilitas Utama Showcase**: Ruang ber-AC, APE edukatif, kamar tidur, ruang makan, dapur higienis, dan toilet dengan water heater/cooler.
+- **Kegiatan Harian Interaktif**: 6 jadwal aktivitas harian ananda dari pagi hingga sore.
+- **Informasi 2 Cabang**:
+  - **TPA Pusat**: Jl. Sarjana, Blok C17 Timbangan, Indralaya Utara (`0811-7474-72`).
+  - **TPA Cabang**: Jl. Perumahan Griya Sejahtera 7 A4 No. 5 (`0823-7817-6209`).
+- **Formulir Pendaftaran Online (Fast-Track)**: Registrasi online langsung terhubung ke WhatsApp pengasuh secara otomatis dengan pesan terformat.
+- **Tanya Jawab (FAQ)** & Widget WhatsApp Melayang.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🛡️ Dashboard Admin CMS (`/admin`)
+- **Pengaturan Teks & Foto Website (`/admin/settings`)**: Mengubah judul, subtitle, pengumuman, daftar syarat, uang pendaftaran, nomor WA, serta mengunggah **Foto Hero**, **Foto Pembelajaran**, dan **Logo PNG**.
+- **Kelola Fasilitas (`/admin/facilities`)**: Tambah/Edit/Hapus fasilitas utama beserta upload **Foto Ruangan**.
+- **Kelola Kegiatan Harian (`/admin/activities`)**: Tambah/Edit/Hapus program kegiatan harian, gradien warna, dan upload **Foto Kegiatan**.
+- **Kelola Pendaftaran Online (`/admin/registrations`)**: Melihat daftar pendaftar masuk, mengubah status (*Menunggu Konfirmasi*, *Dikonfirmasi*, *Ditolak*), dan langsung WhatsApp ke orang tua.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Spesifikasi Teknologi (Tech Stack)
 
-## Agentic Development
+- **Backend Framework**: Laravel 13.25.0 (PHP 8.4.24)
+- **Frontend Styling**: Tailwind CSS v4 & Alpine.js
+- **Database**: SQLite (Lokal) / MySQL (Production / cPanel)
+- **Bundler & Build Tool**: Vite 8.2
+- **Iconography & Fonts**: Instrument Sans & Google Inter Fonts
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 🚀 Cara Menjalankan Project secara Lokal
 
-php artisan boost:install
-```
+1. **Clone Repository**:
+   ```bash
+   git clone https://github.com/septaryanhidayat/tparobbani.git
+   cd tparobbani
+   ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+2. **Install Depedensi PHP & JavaScript**:
+   ```bash
+   composer install
+   npm install
+   ```
 
-## Contributing
+3. **Konfigurasi Environment (`.env`)**:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. **Migrasi Database & Seeder**:
+   ```bash
+   touch database/database.sqlite
+   php artisan migrate --seed
+   ```
 
-## Code of Conduct
+5. **Jalankan Server Development**:
+   ```bash
+   npm run dev
+   php artisan serve
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Buka `http://127.0.0.1:8000` di browser Anda.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🔑 Kredensial Login Admin (Lokal & Production)
 
-## License
+- **URL Login Admin**: `/admin/login`
+- **Email**: `tpa@sitrobbani.sch.id`
+- **Password**: `p4l3mb4ng`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 📦 Deployment ke cPanel / Shared Hosting
+
+1. Upload berkas project ke server hosting Anda.
+2. Salin isi file `.env.production` menjadi `.env`.
+3. Import file `database/tpa_robbani.sql` ke database MySQL cPanel phpMyAdmin.
+4. Jalankan kompilasi aset & symlink storage:
+   ```bash
+   php artisan storage:link
+   php artisan config:clear
+   ```
+
+---
+
+## 📄 Lisensi
+
+Project ini dikembangkan untuk **SIT Robbani / TPA Robbani Indralaya**. Seluruh hak cipta dilindungi.
